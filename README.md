@@ -18,4 +18,4 @@ git remote add upstream https://github.com/ZaiCortes/AlephArt.git
 2. hacemos los cambios, guardamos
 3. los agregamos a envío (git add -nombre del archivo modificado-)
 4. git commit -m "describimos los cambios hechos"
-5. git push -origin- -nombre de la rama-
+5. git push upstream -nombre de la rama-
