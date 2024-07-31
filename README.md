@@ -13,7 +13,7 @@ git checkout -b -origin-
 
 -------------
 Para hacer cambios en nuestra nueva rama:
-
+git remote add upstream https://github.com/ZaiCortes/AlephArt.git
 1. Hacer una rama nueva (git checkout -b -nueva rama-)
 2. hacemos los cambios, guardamos
 3. los agregamos a envío (git add -nombre del archivo modificado-)
