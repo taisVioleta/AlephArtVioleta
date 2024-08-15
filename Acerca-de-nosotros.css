@@ -1,0 +1,57 @@
+
+.lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+  }
+  
+.poppins-regular {
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+  }
+
+  
+h1{ 
+    font-size: 3rem;
+    color:#050831;
+}
+
+
+h5{ 
+    font-family: "Taviraj", serif;
+    font-size: 2rem;
+    color: #050831;
+}
+
+
+.register{
+    font-family: "Poppins", sans-serif;
+    color: #F90052;
+}
+
+.image-fluid1{
+    max-width: 100%;
+    height: auto;
+}
+
+.col-lg-6{
+    text-align: justify;
+}
+
+.card-title{
+text-align: center;
+color:#050831;
+}
+
+.card-text{
+    text-align: center;
+    color:#133072;
+}
+.card-description{
+    text-align: justify;
+    color:#133072;
+    font-family: "Taviraj", serif;
+    font-size: 1rem;
+}
