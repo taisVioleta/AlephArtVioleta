@@ -6,13 +6,12 @@
     text-align: center;
   }
   
-.poppins-regular {
+  .poppins-regular {
     font-weight: 400;
     font-style: normal;
     text-align: justify;
   }
 
-  
 h1{ 
     font-size: 3rem;
     color:#050831;
@@ -28,8 +27,19 @@ h5{
 
 .register{
     font-family: "Poppins", sans-serif;
-    color: #F90052;
+    color: white;
+    background-color: #F90052;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 150px;
 }
+
+.register:hover{
+    scale: 1.2;
+}
+
+
 
 .image-fluid1{
     max-width: 100%;
@@ -38,6 +48,13 @@ h5{
 
 .col-lg-6{
     text-align: justify;
+}
+
+
+
+.card:hover{
+scale: .95;
+box-shadow: 0 0 25px #133072 ;
 }
 
 .card-title{
@@ -54,4 +71,9 @@ color:#050831;
     color:#133072;
     font-family: "Taviraj", serif;
     font-size: 1rem;
+    padding: 15px;
+}
+
+#personal{
+    margin-top: 90px;
 }
