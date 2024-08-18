@@ -8,3 +8,5 @@ node_modules/
 # Ignorar la carpeta de salida de compilación
 dist/
 build/
+
+.DS_Store
