@@ -6,15 +6,18 @@ En Git:
 ![image](https://github.com/user-attachments/assets/a188b2c1-6169-4617-be4a-628cf60776ca)
 
 **Tarea #6 Página Sobre Nosotras**
+<br>
 Dentro de la carpeta <u>public</u>
 *Se encuentra la carpeta <u>Acerca</> en dónde está el código fuente de la página.
   ![image](https://github.com/user-attachments/assets/471932b9-e5a6-4803-92f6-7d719b5b6e02)
 **Tarea #7 Página Contáctanos**
+<br>
 Dentro de la carpeta <u>public</u>
 *Se encuentra la carpeta <u>Contacto</> en dónde está el código fuente de la página.
 ![image](https://github.com/user-attachments/assets/7c79a416-7149-4901-a343-aca7b2714152)
 
 **Tarea #8 Estructura de Navegación**
+<br>
 Dentro de la carpeta <u>public</u>
 *Se encuentra la carpeta <u>Navbar</u> en donde se ve el código fuente de las 2 navbar que vamos a utilizar.
 ***Navbar 1***
