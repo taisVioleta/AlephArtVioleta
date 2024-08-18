@@ -23,6 +23,8 @@ Dentro de la carpeta *public*
 Dentro de la carpeta *public*
 <br>
 *Se encuentra la carpeta **Navbar** en donde se ve el código fuente de las 2 navbar que vamos a utilizar.
+
+***Las demás páginas creadas para la navegación (eventos, login, registro, perfil y publicaciones) se encuentran dentro de la carpeta **public** -> **html*****
 <br>
 ***Navbar 1***
 ![image](https://github.com/user-attachments/assets/b19531df-9fac-4d65-8b66-f2f4d279791e)
