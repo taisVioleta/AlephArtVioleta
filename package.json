@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ZaiCortes/AlephArt/issues"
   },
-  "homepage": "https://github.com/ZaiCortes/AlephArt#readme"
+  "homepage": "https://github.com/ZaiCortes/AlephArt#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
 }
