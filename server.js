@@ -7,11 +7,11 @@ const app = express();
 app.use(cors());
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'AlephArt-diana-navbar')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
 // Iniciar el servidor en el puerto 8000
 app.listen(8000, () => {
-    console.log('Servidor escuchando en el puerto 80009');
+    console.log('Servidor escuchando http://localhost:8000');
 });
