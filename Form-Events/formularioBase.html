@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Evento</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="contacto.css">
+
+    <!--Font-Google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!--Font-Lato--> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!--Font-Taviraj--> 
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!--Font-Poppins-->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row formulario">
+ 
+             <div class="col-lg-9 " id="box">   
+            
+                <form id="formularioContacto">
+                   <br>
+                   <h1 class="titulo ">Crear Evento</h1>
+                   <div class="col">
+                   <img src="/Form-Events/recursosjpg/audience-1867754_1280.jpg" class="img-fluid" id="portada">
+                   </div>
+                   <br>  <br> 
+                    
+                <div class="form-group">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del evento:" >
+                </div>
+                 <br>
+                    
+
+
+                 <div class="row form-group"> 
+                        <div class="col-md-3">
+                          <label for="inputDate" class="form-label"></label>
+                          <input type="date" class="form-control" id="inputDate" placeholder="Fecha">
+                        </div>
+
+                        <div class="col-md-3">
+                         <label for="inputCity" class="form-label"></label>
+                         <input type="text" class="form-control" id="inputCity" placeholder="Cuidad">
+                        </div>
+
+                        <div class="col-md-3">
+                         <label for="inputState" class="form-label"></label>
+                           <select id="inputState" class="form-select" >
+                             <option selected>Estado</option>
+                               <option>Aguascalientes</option>
+                               <option>Baja California</option>
+                               <option>Baja California Sur</option>
+                               <option>Campeche</option>
+                               <option>CDMX</option>
+                               <option>Chiapas</option>
+                               <option>Chihuahua</option>
+                               <option>Coahuila de Zaragoza</option>
+                               <option>Colima</option>
+                               <option>Durango</option>
+                               <option>Estado de México</option>
+                               <option>Guanajuato</option>
+                               <option>Guerrero</option>
+                               <option>Hidalgo</option>
+                               <option>Jalisco</option>
+                               <option>Michoacán</option> 
+                               <option>Morelos</option>
+                               <option>Nayarit</option>
+                               <option>Nuevo León</option>
+                               <option>Oaxaca</option>
+                               <option>Puebla</option>
+                               <option>Querétaro</option>
+                               <option>Quintana Roo</option>
+                               <option>San Luis Potosí</option>
+                               <option>Sinaloa</option>
+                               <option>Sonora</option>
+                               <option>Tabasco</option>
+                               <option>Tamaulipas</option>
+                               <option>Tlaxcala</option>
+                               <option>Veracruz</option> 
+                               <option>Yucatán</option>
+                               <option>Zacatecas</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label for="inputcategory" class="form-label"></label>
+                          <select id="inputcategory" class="form-select" >
+                             <option selected>Categoría</option>
+                             <option>Arte Urbano</option>
+                             <option>tecnologías</option>
+                             <option>Música</option>
+                             <option>Dibujo</option>
+                             <option>Talleres</option>
+                         </select>
+                        </div>
+                </div>
+                <br><br>
+            
+
+                <div class="row form-group">
+                   <label for="mode" class="labels"></label>
+                   <select id="inputMode" class="form-select" >
+                    <option selected>Modalidad</option>
+                    <option>Presencial</option>
+                    <option>Virtual</option> 
+                  </select>
+                </div>
+            <br>
+            <br>
+
+
+            <div class=" row form-group">
+              <textarea class="form-control" id="despripción"  rows="5" placeholder="Decribe tu evento" ></textarea>
+            </div>
+            <br>
+            <br>
+            <div class=" row div-button">
+               <button type="submit" class="btn btn-danger 
+               btn-enviar"> Crear </button>
+               <a id="emailA"></a>
+            </div>
+             <br>
+             <br>
+             <br>
+             <br>
+                
+             </form>
+        </div>
+    </div>
+</div>   
+
+ 
+
+<footer> <p><small>© 2024 AlephArt</small></p>
+    <br>
+    <br>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">emailjs.init('Eivo698efOjc7hKRe')</script>
+<script src="contacto.js"></script>
+</body>
+
+
+  </html>
