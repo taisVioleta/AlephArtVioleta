@@ -1,5 +1,4 @@
 document.getElementById('formularioEvento').addEventListener('submit', function(event) {
-
     console.log('Formulario enviado');
     event.preventDefault();
 
