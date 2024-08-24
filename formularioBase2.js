@@ -56,7 +56,7 @@ document.getElementById('formularioEvento').addEventListener('submit', function(
         Swal.fire({
             icon: "success",
             title: "¡Formulario enviado!",
-            text: "Formulario enviado correctamente."
+            text: "Formulario enviado correctamente. <br> Tu evento está publicado."
         });
     } else if (errores.length === 1) {
         Swal.fire({
