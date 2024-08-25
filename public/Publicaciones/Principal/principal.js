@@ -89,9 +89,10 @@ function agregarNuevaPublicacion() {
   const contenido = document.getElementById('formControl').value; //Información obtenida del TextArea
   const files = document.getElementById('fileInput').files;
   const buttonImages = [
-      { src: '../../assets/iconos/meeting.png', reactions: 12 },
-      { src: '../../assets/iconos/share.png', reactions: 7 },
-      { src: '../../assets/iconos/sparkles.png', reactions: 25 }
+      { src: '/public/assets/iconos/meeting.png', reactions: 12 },
+      { src: '/public/assets/iconos/share.png', reactions: 7 },
+      { src: '/public/assets/iconos/sparkles.png', reactions: 25 },
+
   ];
 
   if (contenido.trim() === '') {  //Si no escribe nada
@@ -183,3 +184,4 @@ document.getElementById('fileInput').addEventListener('change', handleFilePrevie
 
 // Cargar las publicaciones al cargar la página
 document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage);
+
