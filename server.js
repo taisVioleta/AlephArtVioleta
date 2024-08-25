@@ -9,13 +9,13 @@ app.use(cors());
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta para la página principal (opcional)
+// Ruta para la página principal 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public/Eventos/html', 'eventos.html'));
 });
 
 
-// Iniciar el servidor en el puerto 8000
+// Iniciar el servidor en el puerto 8080
 app.listen(8080, () => {
     console.log('Servidor escuchando http://localhost:8080');
 });
