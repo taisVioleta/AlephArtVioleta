@@ -11,11 +11,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para la página principal 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'principal.html'));
+    res.sendFile(path.join(__dirname, '../public', 'pantallaPrincipal.html'));
 });
 
 
-// Iniciar el servidor en el puerto 8081
-app.listen(8081, () => {
-    console.log('Servidor escuchando http://localhost:8081');
+// Iniciar el servidor en el puerto 8080
+app.listen(8080, () => {
+    console.log('Servidor escuchando http://localhost:8080');
 });
