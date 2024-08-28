@@ -6,6 +6,8 @@ const app = express();
 // Habilitar CORS para todos los orígenes
 app.use(cors());
 
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, '../public')));
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../public/Eventos')));
 
