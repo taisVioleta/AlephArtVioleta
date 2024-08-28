@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const newEventForm = document.querySelector('#formularioEvento');
     
     // Verificar si estamos editando un evento existente
+    if (!newEventForm) {
+        console.error('El formulario con id "formularioEvento" no se encuentra en el DOM.');
+        return;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
 
