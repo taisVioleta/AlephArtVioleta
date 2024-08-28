@@ -7,11 +7,11 @@ const app = express();
 app.use(cors());
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public/Eventos')));
 
 // Ruta para la página principal 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/Publicaciones/Principal', 'principal.html'));
+    res.sendFile(path.join(__dirname, '../public/Eventos/html', 'eventos.html'));
 });
 
 
