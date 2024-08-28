@@ -13,7 +13,7 @@ function createEventCard(event) {
                 <div class="card p-3 h-100 mb-4 d-flex flex-column">
                     <div class="row g-0">
                         <div class="col-8">
-                            <img src="${event.image}" class="img-fluid" alt="Imagen">
+                            <img src="${event.image}" class="img-fluid" alt="event-image">
                         </div>
                         <div class="col-4 d-flex flex-column align-items-center justify-content-between">
                             <div class="text-center">
@@ -40,7 +40,6 @@ function createEventCard(event) {
                             <img src="../resourses/pen-field.png" width="20" height="20">
                         </button>
                         </a>
-
                         
                         <button class="btn btn-outline-light delete-event-btn">
                             <img src="../resourses/trash.png" width="20" height="20">
@@ -89,11 +88,11 @@ function editEvent(eventId) {
 // Función para eliminar un evento
 function deleteEvent(eventId) {
     let events = JSON.parse(localStorage.getItem('eventos')) || [];
-    events = events.filter(event => event.id !== eventId);
-    localStorage.setItem('eventos', JSON.stringify(events));
+    events = events.filter(event => event.id !== eventId); // Filtra los eventos para excluir el que tiene el ID proporcionado
+    localStorage.setItem('eventos', JSON.stringify(events)); // Guarda la nueva lista de eventos en localStorage
     // Recargar los eventos en la página
-    eventContainer.innerHTML = '';
-    loadEventsFromLocalStorage();
+    eventContainer.innerHTML = ''; // Limpia el contenedor de eventos
+    loadEventsFromLocalStorage(); // Vuelve a cargar los eventos actualizados
 }
 
 // Cargar los eventos al cargar la página
