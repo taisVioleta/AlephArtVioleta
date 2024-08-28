@@ -63,7 +63,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
 
   likeButton.classList.add("image-buttons");
   const likeImage = document.createElement("img");
-  likeImage.src = "../../assets/iconos/sparkles.png";
+  likeImage.src = "../assets/iconos/sparkles.png";
   likeImage.alt = "Like";
   likeButton.appendChild(likeImage);
 
@@ -75,7 +75,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
   shareButton.classList.add("image-buttons");
 
   const shareImage = document.createElement("img");
-  shareImage.src = "../../assets/iconos/share.png";
+  shareImage.src = "../assets/iconos/share.png";
   shareImage.alt = "Share";
   shareButton.appendChild(shareImage);
 
@@ -88,7 +88,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
 
   editButton.classList.add("edit-button");
   const editImage = document.createElement("img");
-  editImage.src = "../../assets/iconos/pen-field.png";
+  editImage.src = "../assets/iconos/pen-field.png";
   editImage.alt = "edit";
   editButton.appendChild(editImage);
 
@@ -98,7 +98,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
 
   deleteButton.classList.add("delete-button");
   const deleteImage = document.createElement("img");
-  deleteImage.src = "../../assets/iconos/trash.png";
+  deleteImage.src = "../assets/iconos/trash.png";
   deleteImage.alt = "delete";
   deleteButton.appendChild(deleteImage);
 
@@ -147,6 +147,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
       confirmButtonText: "Eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
+        
         card.remove(); // Elimina la tarjeta del DOM
         deletePublicationData(index); // Elimina la publicación del almacenamiento
       }
@@ -181,6 +182,9 @@ function deletePublicationData(index) {
   if (index >= 0 && index < items.length) {
     items.splice(index, 1);
     localStorage.setItem("items", JSON.stringify(items));
+    card.innerHTML = '';
+    loadItemsFromLocalStorage();
+
   }
 }
 

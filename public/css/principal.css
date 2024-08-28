@@ -90,6 +90,14 @@ section {
   max-width: 700px; /* Ancho máximo de la tarjeta */
   margin: 0px;
 }
+#card-container-form {
+  display: flex;
+  flex-direction: column; /* Disposición vertical */
+  gap: 20px; /* Espacio entre las tarjetas */
+  width: 100%;
+  max-width: 700px; /* Ancho máximo de la tarjeta */
+  margin: 0px;
+}
 
 .card {
   border: 1px solid #ddd;
