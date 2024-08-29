@@ -189,16 +189,6 @@ function agregarNuevaPublicacion() {
   const usuario = "Usuario 1";
   const contenido = document.getElementById('formControl').value;
   const files = document.getElementById('fileInput').files;
-<<<<<<< HEAD
-  const buttonImages = [
-      { src: '/public/assets/iconos/meeting.png', reactions: 12 },
-      { src: '/public/assets/iconos/share.png', reactions: 7 },
-      { src: '/public/assets/iconos/sparkles.png', reactions: 25 },
-
-  ];
-=======
-  
->>>>>>> 340ce3dedbf66b38f1dd98f7f7d8b86da84b7aa1
 
   if (contenido.trim() === '') {
       alert('Por favor, ingresa algo para compartir.');
@@ -287,9 +277,4 @@ function handleFilePreview(event) {
 document.getElementById('fileInput').addEventListener('change', handleFilePreview);
 
 // Cargar las publicaciones al cargar la página
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage);
-
-=======
 document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage); //Recarga la página y muestra las publicaciones guardadas
->>>>>>> 340ce3dedbf66b38f1dd98f7f7d8b86da84b7aa1
