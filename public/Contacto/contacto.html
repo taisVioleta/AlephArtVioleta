@@ -112,31 +112,36 @@
                     <div class="form-group">
                     <label for="nombre" class="labels">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" autocomplete="given-name">
-                    </div>
+                    <span id="nombreError" class="error-message text-danger"></span>
+                  </div>
                     <div class="form-group">
                     <label for="apellido" class="labels">Apellido</label>
                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingresa tu apellido" autocomplete="family-name">
-
+                    <span id="apellidoError" class="error-message text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="email" class="labels">Correo electrónico</label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email">
-                    </div>
+                        <span id="emailError" class="error-message text-danger"></span>
+                      </div>
                     <div class="form-group">
-                        <label for="teléfono" class="labels">Teléfono</label>
-                        <input type="number" class="form-control" id="teléfono" name="telefono" placeholder="Ingresa tu teléfono" autocomplete="tel">
+                      <label for="telefono" class="labels">Teléfono</label>
+                      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" autocomplete="tel">
+                      <span id="telefonoError" class="error-message text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="asunto" class="labels">Asunto</label>
                         <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Ingresa el asunto de tu mensaje">
-                    </div>
+                        <span id="asuntoError" class="error-message text-danger"></span>
+                      </div>
                     <div class="form-group">
                         <label for="mensaje" class="labels">Mensaje</label>
                         <textarea class="form-control" id="mensaje" name="mensaje" rows="3" placeholder="Ingresa tu mensaje"></textarea>
+                        <span id="mensajeError" class="error-message text-danger"></span>
                         <br>
                         <div class="div-button">
                             <button type="submit" class="btn btn-danger 
-                        btn-enviar">Enviar</button>
+                        btn-enviar" id="btn-enviar">Enviar</button>
                         <a id="emailA"></a>
                         </div>
                         <br>
