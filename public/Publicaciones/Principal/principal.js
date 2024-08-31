@@ -1,6 +1,5 @@
-
 // Función para crear una tarjeta
-function createCard(usuario, contenido, files = [], imageUrl = '', index) {
+function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaCreacion = '') {
   const card = document.createElement('div');
   card.classList.add('card');
   card.dataset.index = index;
@@ -13,7 +12,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
     if (file.type?.startsWith('image/') || fileURL.startsWith('blob:')) {
       fileElements += `<img src="${fileURL}" alt="Imagen" class="card-image">`;
     } else if (file.type?.startsWith('audio/')) {
-      fileElements += `<audio src="${fileURL}" alt="video" controls class="card-image"></audio>`;
+      fileElements += `<audio src="${fileURL}" alt="audio" controls class="card-image"></audio>`;
     } else if (file.type?.startsWith('video/')) {
       fileElements += `<video src="${fileURL}" controls class="card-image"></video>`;
     }
@@ -42,16 +41,14 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
           </button>
         </div>
       </div>
-     
-        <p class="card-description">${contenido}</p>
-        <div class="edit-form" style="display: none;">
-          <textarea class="edit-textarea">${contenido}</textarea>
-          <button class="save-button">Guardar</button>
-        
+      <div class="card-date">${fechaCreacion}</div> 
+      <p class="card-description">${contenido}</p>
+      <div class="edit-form" style="display: none;">
+        <textarea class="edit-textarea">${contenido}</textarea>
+        <button class="save-button">Guardar</button>
       </div>
     </div>
   `;
-
   // Obtener los elementos que necesitan eventos
   const editButton = card.querySelector('.edit-button');
   const deleteButton = card.querySelector('.delete-button');
@@ -87,8 +84,8 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
       confirmButtonText: "Eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
-        card.remove();
-        deletePublicationData(index);
+        card.remove(); //Eliminar la card
+        deletePublicationData(index); //Eliminar del JSON
       }
     });
   });
@@ -98,19 +95,19 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index) {
 
 // Actualizar los datos de la publicación en el localStorage
 function updatePublicationData(index, updatedData) {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
-  if (index >= 0 && index < items.length) {
-    items[index] = { ...items[index], ...updatedData };
-    localStorage.setItem("items", JSON.stringify(items));
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
+  if (index >= 0 && index < publicaciones.length) {
+    publicaciones[index] = { ...publicaciones[index], ...updatedData };
+    localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
   }
 }
 
 // Eliminar la publicación del localStorage
 function deletePublicationData(index) {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
-  if (index >= 0 && index < items.length) {
-    items.splice(index, 1);
-    localStorage.setItem("items", JSON.stringify(items));
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
+  if (index >= 0 && index < publicaciones.length) {
+    publicaciones.splice(index, 1);
+    localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
   }
 }
 
@@ -125,22 +122,25 @@ function agregarNuevaPublicacion() {
     return;
   }
 
-  const items = JSON.parse(localStorage.getItem("items")) || [];
+  const publicaciones = JSON.parse(localStorage.getItem("publicaciones")) || [];
 
   // Crear una lista de URLs para los archivos
   const fileURLs = Array.from(files).map(file => URL.createObjectURL(file));
 
-  const newItem = {
+  const fechaCreacion = new Date().toLocaleString(); // Captura la fecha y hora actual
+
+  const nuevaPublicacion = {
     name: usuario,
     description: contenido,
-    files: fileURLs
+    files: fileURLs,
+    date: fechaCreacion // Guarda la fecha en el objeto
   };
-  
-  items.push(newItem);
-  localStorage.setItem("items", JSON.stringify(items));
+
+  publicaciones.push(nuevaPublicacion);
+  localStorage.setItem("publicaciones", JSON.stringify(publicaciones));
 
   // Crear la nueva tarjeta
-  const card = createCard(usuario, contenido, files, '', items.length - 1);
+  const card = createCard(usuario, contenido, files, '', publicaciones.length - 1, fechaCreacion);
   document.getElementById('card-container').appendChild(card);
 
   // Limpiar inputs
@@ -152,11 +152,11 @@ function agregarNuevaPublicacion() {
 
 // Función para cargar las publicaciones desde el localStorage
 function loadItemsFromLocalStorage() {
-  const storageItems = localStorage.getItem("items");
+  const storageItems = localStorage.getItem("publicaciones");
   if (storageItems) {
-    const items = JSON.parse(storageItems);
-    items.forEach((item, index) => {
-      const card = createCard(item.name, item.description, item.files, '', index);
+    const publicaciones = JSON.parse(storageItems);
+    publicaciones.forEach((publicacion, index) => {
+      const card = createCard(publicacion.name, publicacion.description, publicacion.files, '', index, publicacion.date);
       document.getElementById('card-container').appendChild(card);
     });
   }
