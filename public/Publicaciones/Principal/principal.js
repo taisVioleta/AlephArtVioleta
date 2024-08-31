@@ -41,7 +41,7 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaC
           </button>
         </div>
       </div>
-      <div class="card-date">${fechaCreacion}</div> <!-- Aquí se muestra la fecha de creación -->
+      <div class="card-date">${fechaCreacion}</div> 
       <p class="card-description">${contenido}</p>
       <div class="edit-form" style="display: none;">
         <textarea class="edit-textarea">${contenido}</textarea>
@@ -84,8 +84,8 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaC
       confirmButtonText: "Eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
-        card.remove();
-        deletePublicationData(index);
+        card.remove(); //Eliminar la card
+        deletePublicationData(index); //Eliminar del JSON
       }
     });
   });
