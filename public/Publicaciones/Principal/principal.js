@@ -212,4 +212,4 @@ document.getElementById('iconAddPicture').addEventListener('click', function() {
 document.getElementById('fileInput').addEventListener('change', handleFilePreview);
 
 // Cargar las publicaciones al cargar la página
-document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage);
+document.addEventListener('DOMContentLoaded', loadItemsFromLocalStorage); //Recarga la página y muestra las publicaciones guardadas
