@@ -22,10 +22,10 @@ function createEventCard(event) {
                             </div>
                             <div class="d-flex">
                                 <button class="btn btn-outline-light me-1">
-                                    <img src="../resourses/wishlist-star.png" width="20" height="20">
+                                    <img src="../assets/wishlist-star.png" width="20" height="20">
                                 </button>
                                 <button class="btn btn-outline-light">
-                                    <img src="../resourses/calendar-plus.png" width="20" height="20">
+                                    <img src="../assets/calendar-plus.png" width="20" height="20">
                                 </button>
                             </div>
                         </div>
@@ -37,12 +37,12 @@ function createEventCard(event) {
                         <br>
                         <a href="../html/formularioEditar.html?id=${event.id}">
                         <button class="btn btn-outline-light edit-event-btn">
-                            <img src="../resourses/pen-field.png" width="20" height="20">
+                            <img src="../assets/pen-field.png" width="20" height="20">
                         </button>
                         </a>
                         
                         <button class="btn btn-outline-light delete-event-btn">
-                            <img src="../resourses/trash.png" width="20" height="20">
+                            <img src="../assets/trash.png" width="20" height="20">
                         </button>
                     </div>
                 </div>
@@ -75,17 +75,21 @@ function createEventCard(event) {
 function loadEventsFromLocalStorage() {
     const events = JSON.parse(localStorage.getItem('eventos')) || [];
     events.forEach(event => {
+        // Convertir la fecha a un objeto Date y ajustarla a la zona horaria
+        const eventDate = new Date(event.fecha + 'T00:00:00'); // Asegura que la fecha se interprete correctamente
+        
         const eventData = {
             id: event.id,
-            image: event.image || '../resourses/eventonuevo.png',
-            day: new Date(event.fecha).getDate(),
-            month: new Date(event.fecha).toLocaleString('es-ES', { month: 'short' }),
+            image: '../assets/eventonuevo.png' || event.image, //se cambió el orden de la condicional para que se vea la imagen predeterminada antes de event.image
+            day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
+            month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
             title: event.nombre,
             place: `${event.ciudad}, ${event.estado}`,
             description: event.descripcion
         };
         createEventCard(eventData);
     });
+    
 }
 
 // Función para editar un evento
