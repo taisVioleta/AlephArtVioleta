@@ -8,7 +8,10 @@ app.use(cors());
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../public')));
-
+// Ruta para servir el archivo 'navbar.html'
+app.get('/navbar', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/Navbar', 'navbar.html'));
+  });
 // Ruta para la página principal 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'pantallaPrincipal.html'));
