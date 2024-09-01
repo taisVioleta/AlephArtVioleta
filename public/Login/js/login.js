@@ -1,47 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Almacenar un usuario en el localStorage
-    const usuariosPrueba = [
-        {
-            email: "prueba@ejemplo.com",
-            contraseña: "password123"
-        }
-    ];
-
-    // Guardar el usuario de prueba en el localStorage si aún no existe
-    if (!localStorage.getItem('usuarios')) {
-        localStorage.setItem('usuarios', JSON.stringify(usuariosPrueba));
+// Función para validar credenciales
+function validarCredenciales(email, contraseña) {
+    const usuariosAlmacenados = JSON.parse(localStorage.getItem("users"));
+    if (!usuariosAlmacenados) {
+        return false; // No hay usuarios almacenados
     }
 
-    // Manejar el formulario de inicio de sesión
-    const formulario = document.getElementById('formularioRegistro');
-    formulario.addEventListener('submit', (event) => {
-        event.preventDefault();
+    // Validar si el email y la contraseña coinciden con algún usuario almacenado
+    return usuariosAlmacenados.some(user => user.email === email && user.contraseña === contraseña);
+}
 
-        // Obtener los valores de los campos de entrada
-        const email = document.getElementById('email').value;
-        const contraseña = document.getElementById('inputPassword').value;
+// Manejar el inicio de sesión
+document.getElementById("formularioRegistro").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-        // Obtener la lista de usuarios almacenados en el localStorage
-        const usuariosAlmacenados = JSON.parse(localStorage.getItem('usuarios'));
+    const email = document.getElementById("email").value.trim();
+    const contraseña = document.getElementById("inputPassword").value.trim();
 
-        // Verificar si existe un usuario con el email y la contraseña proporcionados
-        const usuarioEncontrado = usuariosAlmacenados.find(usuario => 
-            usuario.email === email && usuario.contraseña === contraseña
-        );
+    // Validar campos vacíos
+    if (!email || !contraseña) {
+        Swal.fire({
+            icon: "warning",
+            title: "Campos vacíos",
+            text: "Por favor, ingrese su correo electrónico y contraseña.",
+        });
+        return;
+    }
 
-        if (usuarioEncontrado) {
-            // Autenticación exitosa
-            Swal.fire('¡Bienvenido!', 'Has iniciado sesión correctamente', 'success');
-
-            // Mostrar los elementos de la barra de navegación para usuarios autenticados
-            document.getElementById('loggedInItems').style.display = 'block';
-            document.getElementById('loggedOutItems').style.display = 'none';
-
-            // Redirigir a la página principal u otra página
-            // window.location.href = "../index.html"; // Redirigir a la página de inicio
-        } else {
-            // Autenticación fallida
-            Swal.fire('Error', 'Correo electrónico o contraseña incorrectos', 'error');
-        }
-    });
+    // Validar credenciales
+    if (validarCredenciales(email, contraseña)) {
+        Swal.fire({
+            icon: "success",
+            title: "Inicio de sesión exitoso",
+            text: "¡Bienvenido!",
+            timer: 1500,
+            showConfirmButton: false
+        }).then(() => {
+            window.location.href = "/public/Publicaciones/Principal/principal.html"; // Redirige a la página de publicaciones
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Credenciales inválidas",
+            text: "Nombre de usuario o contraseña incorrectos.",
+        });
+    }
 });
