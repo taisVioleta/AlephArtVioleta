@@ -110,7 +110,7 @@ document
                 },
                 buttonsStyling: false            
             }).then(() => {
-                window.location.href = '/public/Login/html/login2.html'
+                window.location.href = '/public/Login/html/login.html'
             });
         }
     }
