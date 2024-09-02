@@ -35,7 +35,7 @@ document.getElementById("formularioRegistro").addEventListener("submit", functio
             timer: 1500,
             showConfirmButton: false
         }).then(() => {
-            window.location.href = "/public/Publicaciones/Principal/principal.html"; // Redirige a la página de publicaciones
+            window.location.href = "../Publicaciones/Principal/principal.html"; // Redirige a la página de publicaciones
         });
     } else {
         Swal.fire({

@@ -2,7 +2,7 @@
   "name": "alephart",
   "version": "1.0.0",
   "description": "Repostorio de equipo Stella",
-  "main": "index.js",
+  "main": "/public/pantallaPrincipal.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

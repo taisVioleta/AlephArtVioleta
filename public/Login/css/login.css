@@ -53,7 +53,7 @@ h1 {
 
 /*Estilos botón del formulario*/
 
-.btn-enviar{
+#btn-enviar { /*Se convirtió en id*/
   background-color:#F90052;
   border-color: #F90052;
 }
