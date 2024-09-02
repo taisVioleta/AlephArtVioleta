@@ -14,6 +14,15 @@ app.get('/navbar', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/Navbar', 'navbar.html'));
 });
 
+// Ruta para servir el archivo 'navbarAuth.html'
+app.get('/navbarAuth', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/Navbar', 'navbarAuth.html'));
+});
+// Ruta para servir el archivo 'navbarAuth.html'
+app.get('/navbarAuth-css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/Navbar', 'navbar.css'));
+});
+
 // Ruta para servir el archivo 'footer.html'
 app.get('/footer', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/Footer', 'footer.html'));
