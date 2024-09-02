@@ -58,7 +58,7 @@ h3 {
 
 /*Estilos botón del formulario*/
 
-.btn-enviar{
+#btn-enviar{
   background-color:#F90052;
   border-color: #F90052;
 }
@@ -78,10 +78,10 @@ h3 {
 }
 
 
-footer {
+/*footer {
   text-align: center;
   color: #133072;
-}
+}*/
 
 /*Medias queries*/
 
