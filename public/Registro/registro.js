@@ -110,7 +110,7 @@ document
                 },
                 buttonsStyling: false            
             }).then(() => {
-                window.location.href = '../Publicaciones/Principal/principal.html'
+                window.location.href = "/login";
             });
         }
     }

@@ -7,7 +7,8 @@
 *Folly: #F90052
 */
 
- 
+
+
 /*Estilos imagen del formulario*/
 .col-lg-5 {
   padding: 0;
@@ -61,7 +62,7 @@ color: #133072;
 
 /*Estilos botón del formulario*/
 
-.btn-enviar{
+#btn-enviar{ /*Se convirtió en id=btn-enviar*/
 background-color:#F90052;
 border-color: #F90052;
 }
