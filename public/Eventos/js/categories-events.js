@@ -17,7 +17,7 @@ function formatEventData(event) {
         
     return {
         id: event.id,
-        image: '../assets/eventonuevo.png' || event.image,  //se cambió el orden de la condicional para que se vea la imagen predeterminada antes de event.image
+        image:event.image  ||'../assets/eventonuevo.png' ,  //se cambió el orden de la condicional para que se vea la imagen predeterminada antes de event.image
         day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
         month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
         title: event.nombre,
