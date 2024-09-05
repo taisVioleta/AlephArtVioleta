@@ -2,32 +2,15 @@
 const eventContainer = document.getElementById('eventContainer');
 let allEvents = []; //Añadi esta variable para tomarlo en la función de filtrado
 
-<<<<<<< HEAD
-// Eventlistener para cargar los eventos al inicio
-document.addEventListener('DOMContentLoaded', loadEventsFromLocalStorage); //Probar con la función de abajo
-/**document.addEventListener('DOMContentLoaded', function() {
-    const noEventsImage = document.getElementById('no-events-image');
-    if (noEventsImage) {
-        renderEvents(allEvents); // Solo renderiza si el elemento existe
-    } else {
-        console.error('No se encontró la imagen de "no hay eventos".');
-    }
-});  Si uso esta no me cargan los eventos*/
-=======
 // Event Listener para cargar los eventos al inicio
 document.addEventListener('DOMContentLoaded', loadEventsFromLocalStorage);
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
 
 // Funciones de carga y creación de cards de eventos
 function loadEventsFromLocalStorage() {
     const storedEvents = localStorage.getItem('eventos');
     allEvents = storedEvents ? JSON.parse(storedEvents) : [];
-<<<<<<< HEAD
     /**allEvents.forEach(event => createEventCard(formatEventData(event))); */ //Probar con esta y la de abajo
     renderEvents(allEvents);  // Llama a renderEvents en lugar de crear las cards directamente */
-=======
-    allEvents.forEach(event => createEventCard(formatEventData(event)));
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
 }
 
 function formatEventData(event) {
@@ -48,16 +31,9 @@ function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'col-md-4';
     card.dataset.id = event.id; // Asignar el id del evento al atributo dataset
-<<<<<<< HEAD
-    //Vamos a jugar con el container secundario "col", para el tamaño de las cards para dispositivps pequeños
-    card.innerHTML = `
-        <div class="event-cards row">
-            <div class="single-card col"> 
-=======
     card.innerHTML = `
         <div class="event-cards row">
             <div class="col">
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
                 <div class="card p-3 h-100 mb-4 d-flex flex-column">
                     <div class="row g-0">
                         <div class="col-8">
@@ -65,23 +41,14 @@ function createEventCard(event) {
                         </div>
                         <div class="col-4 d-flex flex-column align-items-center justify-content-between">
                             <div class="text-center">
-<<<<<<< HEAD
                                 <h3 id="day" class="display-4">${event.day}</h3>
                                 <p id="month" class="event-month">${event.month}</p>
-=======
-                                <h1 class="display-4 text-danger">${event.day}</h1>
-                                <p class="text-primary">${event.month}</p>
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
                             </div>
                             <div class="d-flex">
                                 <button class="btn btn-outline-light me-1">
                                     <img src="../assets/wishlist-star.png" width="20" height="20">
                                 </button>
-<<<<<<< HEAD
                                 <button class="btn btn-outline-light me-1">
-=======
-                                <button class="btn btn-outline-light">
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
                                     <img src="../assets/calendar-plus.png" width="20" height="20">
                                 </button>
                             </div>
@@ -129,7 +96,6 @@ function confirmDelete(eventId, card) {
     });
 }
 
-<<<<<<< HEAD
 //Función para renderizar los eventos disponibles en cada momento
 function renderEvents(events) {
     eventContainer.innerHTML = ''; //Limpiamos contenedores
@@ -147,22 +113,13 @@ function renderEvents(events) {
 // Funciones de edición y eliminación
 function editEvent(eventId) {
     const allEvents = JSON.parse(localStorage.getItem('eventos')) || [];
-=======
-// Funciones de edición y eliminación
-function editEvent(eventId) {
-    const events = JSON.parse(localStorage.getItem('eventos')) || [];
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
     const eventToEdit = allEvents.find(event => event.id === eventId);
     }
 
 function deleteEvent(eventId) {
     allEvents = allEvents.filter(event => event.id !== eventId);
     localStorage.setItem('eventos', JSON.stringify(allEvents));
-<<<<<<< HEAD
     renderEvents(allEvents); // Llamamos a renderEvents para actualizar la vista
-=======
-    renderEvents(allEvents);
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
 }
 
 // Funciones de filtrado y renderizado
@@ -174,14 +131,6 @@ function filterByCategory(category) {
     return allEvents.filter(event => event.categoria === category);
 }
 
-<<<<<<< HEAD
-=======
-function renderEvents(events) {
-    eventContainer.innerHTML = ''; //Limpiamos contenedores
-    events.forEach(event => createEventCard(formatEventData(event)));
-}
-
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
 // Eventos de los botones de filtrado
 document.getElementById('b1').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 1))); //Botón de eventos de este mes
 document.getElementById('b2').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 2))); //Botón de eventos del próximo mes
@@ -191,7 +140,3 @@ document.getElementById('b5').addEventListener('click', () => renderEvents(filte
 document.getElementById('b6').addEventListener('click', () => renderEvents(filterByCategory('Categoría4')));
 document.getElementById('b7').addEventListener('click', () => renderEvents(filterByCategory('Categoría5')));
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bcf1cfcd0b276ea56ee279eee193354df752694e
