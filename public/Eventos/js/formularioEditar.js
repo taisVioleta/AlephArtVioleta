@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCity').value = eventToEdit.ciudad;
             document.getElementById('inputState').value = eventToEdit.estado;
             document.getElementById('inputCategory').value = eventToEdit.categoria;
+            document.getElementById('inputHora').value = eventToEdit.categoria;
             document.getElementById('inputMode').value = eventToEdit.modalidad;
             document.getElementById('descripcion').value = eventToEdit.descripcion;
 
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ciudad: document.getElementById('inputCity').value,
             estado: document.getElementById('inputState').value,
             categoria: document.getElementById('inputCategory').value,
+            hora: document.getElementById('inputHora').value,
             modalidad: document.getElementById('inputMode').value,
             descripcion: document.getElementById('descripcion').value
         };

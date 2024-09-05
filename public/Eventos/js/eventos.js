@@ -34,6 +34,7 @@ function createEventCard(event) {
                         <h4 class="event-title">${event.title}</h4>
                         <h6 class="event-place">${event.place}.</h6>
                         <p class="event-description flex-grow-1">${event.description}</p>
+                        
                         <br>
                         <a href="../html/formularioEditar.html?id=${event.id}">
                         <button class="btn btn-outline-light edit-event-btn">
@@ -84,7 +85,7 @@ function loadEventsFromLocalStorage() {
             day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
             month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
             title: event.nombre,
-            place: `${event.ciudad}, ${event.estado}`,
+            place: `${event.ciudad}, ${event.estado}, ${event.hora} hrs`,
             description: event.descripcion
         };
         createEventCard(eventData);
