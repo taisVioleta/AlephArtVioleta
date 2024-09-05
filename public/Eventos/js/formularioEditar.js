@@ -3,6 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del evento desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
+    // Vincula el boton agregar imagen con el input de archivo
+    document.getElementById('addImgEvents').addEventListener('click', function() {
+        document.getElementById('inputImg').click();
+        });
+        
+        document.getElementById('inputImg').addEventListener('change', function() {
+            const files = document.getElementById('inputImg').files;
+            if (files.length > 0) {
+                const file = files[0]; 
+                const fileURL = URL.createObjectURL(file);
+        
+                document.getElementById('portada').src = fileURL;
+        
+                // Guarda la URL en el objeto item
+                item.image = fileURL;
+        
+                // Limpia el input
+                document.getElementById('inputImg').value = '';
+            }
+        });
 
     if (eventId) {
         // Cargar los datos del evento desde localStorage

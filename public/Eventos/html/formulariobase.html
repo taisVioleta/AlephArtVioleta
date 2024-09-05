@@ -100,8 +100,9 @@
                    <br>
                    <h1 class="titulo ">Crear Evento</h1>
                    <div class="containerI">
-                   <img src="../assets/audience-1867754_1280.jpg" alt="img-form-crete-events" class="img-fluid" id="portada">
-                   <button type="button" class="btnIm">Agregar imagen</button>
+                   <img src="../resourses/audience-1867754_1280.jpg" alt="img-form-crete-events" class="img-fluid" id="portada">
+                   <button type="button" id="addImgEvents" class="btnIm">Agregar imagen</button>
+                   <input  type="file" id="inputImg"  style="display: none;">
                   </div>
                    <br>  <br> 
                     
@@ -169,7 +170,7 @@
                         <div class="col-md-3">
                           <label for="inputcategory" class="form-label"></label>
                           <select id="inputCategory" class="form-select" >
-                             <option value="Categoría" selected>Categoría</option>
+                             <option value="Categoría" selected>Categoría</option> <!--Este creo que se quitaría para que no quede como opción-->
                              <option value="Categoría1">Arte Urbano</option>
                              <option value="Categoría2">Tecnologías</option>
                              <option value="Categoría3">Música</option>

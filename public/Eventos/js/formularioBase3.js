@@ -10,6 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
 
+    // Vincula el boton agregar imagen con el input de archivo
+    document.getElementById('addImgEvents').addEventListener('click', function() {
+        document.getElementById('inputImg').click();
+        });
+
+        document.getElementById('inputImg').addEventListener('change', function() {
+            const files = document.getElementById('inputImg').files;
+            if (files.length > 0) {
+                const file = files[0]; 
+                const fileURL = URL.createObjectURL(file);
+        
+                document.getElementById('portada').src = fileURL;
+        
+                // Guarda la URL en el objeto item
+                item.image = fileURL;
+        
+                // Limpia el input
+                document.getElementById('inputImg').value = '';
+            }
+        });
+
     newEventForm.addEventListener('submit', function(event) {
         console.log('Formulario enviado');
         // Prevent default action
@@ -23,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
             inputState: document.getElementById('inputState').value,
             inputCategory: document.getElementById('inputCategory').value,
             inputMode: document.getElementById('inputMode').value,
-            descripcion: document.getElementById('descripcion').value.trim()
+            descripcion: document.getElementById('descripcion').value.trim(),
+            image: document.getElementById('portada').src,
         };
 
         const errores = [];
@@ -83,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (index !== -1) {
                         eventos[index] = {
                             id: eventId,
-                            image: document.getElementById('portada').src,
+                            image: item.image,
                             nombre: item.nombre,
                             fecha: item.inputDate,
                             ciudad: item.inputCity,
@@ -98,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Crear nuevo evento
                     const nuevoEvento = {
                         id: Date.now().toString(), // Usar timestamp como ID único
-                        image: document.getElementById('portada').src,
+                        image: item.image,
                         nombre: item.nombre,
                         fecha: item.inputDate,
                         ciudad: item.inputCity,
