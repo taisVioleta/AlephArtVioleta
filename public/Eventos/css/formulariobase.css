@@ -54,11 +54,20 @@
             font-family: 'Poppins', sans-serif;
             width: 100%;
             border-radius: 10px;
-           }
-    
+        }
+
+        .btn-cancelar {
+          margin-top: 15px;
+          background-color:darkgray;
+          border-color: darkgray;
+          font-family: 'Poppins', sans-serif;
+          width: 100%;
+          border-radius: 10px;
+        }
+           
           
           
-           footer {
+        footer {
             text-align: center;
             color: #133072;
-           }
+        }

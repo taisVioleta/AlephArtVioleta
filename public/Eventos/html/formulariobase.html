@@ -180,8 +180,16 @@
                          <span id="inputCategoryError" class="error-message text-danger"></span>
                       </div>
               </div>
-              <br><br>
-            
+              <br>
+              <!--campo hora-->
+              <div class="form-group">
+                <label for="hora" class="form-label">Hora del evento:</label>
+                <br>
+                <input class="form-control" type="time" id="inputHora" name="inputHora">
+                <span id="inputHoraError" class="error-message text-danger"></span>
+              </div>
+
+
 
               <div class="form-group">
                    <label for="mode" class="labels"></label>
@@ -204,7 +212,10 @@
                <button type="submit" class="btn btn-danger 
                btn-enviar"> Crear Evento</button>
                <a id="emailA"></a>
+               <a href="./eventos.html" class="btn btn-secondary btn-cancelar">Cancelar</a>
             </div>
+
+            
              <br><br><br><br>
                 
              </form>
