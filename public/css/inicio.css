@@ -246,7 +246,7 @@
   width: 60%; /*La imagen ocupará el 60% de la anchura del contenedor.*/
   max-width: 200px; 
   aspect-ratio: 1 / 1; /* mantiene la proporción/que se mantengan los cuadrados */
-  border-radius: 50%; 
+  border-radius: 50% !important; 
   object-fit: cover;
   margin: 1rem auto 0; 
   display: block; 
