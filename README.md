@@ -1,8 +1,7 @@
 **TAREA 11 Y 12:**
 ***Instrucciones para verificar la funcionalidad de la página.***
 - Realizar git pull de la rama main.
-- Ingresar a la carpeta */public*.
-- Dentro de la carpeta */public* escribir el comando **node server.js**
+-   **node server.js**
   <br>
 ![image](https://github.com/user-attachments/assets/4a65490b-f897-48d4-8ae6-6d019ce0e726)
 - Dirigirse a http://localhost:8080
