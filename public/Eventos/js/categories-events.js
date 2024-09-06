@@ -22,7 +22,7 @@ function formatEventData(event) {
         day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
         month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
         title: event.nombre,
-        place: `${event.ciudad}, ${event.estado}`,
+        place: `${event.ciudad}, ${event.estado} , ${event.hora} hrs`,
         description: event.descripcion
     };
 }
