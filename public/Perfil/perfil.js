@@ -120,7 +120,7 @@ function loadPosts() {
     const posts = JSON.parse(localStorage.getItem('publicaciones')) || [];
     console.log(posts);
     const gallery = document.getElementById('gallery');
-    gallery.innerHTML = ''; // Clear existing content
+    gallery.innerHTML = ''; 
 
     const postsWithFiles = posts.filter(post => 
         post.files && post.files.length > 0 && post.files[0].trim() !== ""
@@ -131,9 +131,9 @@ function loadPosts() {
       imgContainer.className = 'gallery-img-container';
       
       const img = document.createElement('img');
-      img.src = post.files[0];;
+      img.src = post.files[0];
       img.className = 'gallery-img';
-      img.alt = `Gallery image ${index + 1}`;
+      img.alt = `Imagen de publicación ${index + 1}`;
       img.dataset.description = post.description || '';
       
       img.addEventListener('click', function() {
