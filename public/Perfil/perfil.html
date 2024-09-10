@@ -17,6 +17,7 @@
       type="image/png"
     />
     <link rel="stylesheet" href="css/inicio.css" />
+    <link rel="stylesheet" href="/navbarAuth-css" />
     <link rel="stylesheet" href="/footer-css" />
     <link rel="stylesheet" href="perfil.css" />
     <!--Font-Google-->
@@ -38,7 +39,7 @@
     <script>
       // Función para cargar la navbar
       function loadNavbar() {
-        fetch("/public/Navbar/navbarAuth.html")
+        fetch("/navbarAuth")
           .then((response) => response.text())
           .then((data) => {
             document.getElementById("navbar").innerHTML = data;
