@@ -6,12 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Configurar los eventos de edición
     const setupEditButton = (editButton, textarea, saveButton, textVisible) => {
+        
+        const isEdited = () => textVisible.getAttribute('data-edited') === 'true';
+        
         editButton.addEventListener('click', () => {
             textarea.style.display = 'block';
             saveButton.style.display = 'block';
             editButton.style.display = 'none';
             textVisible.style.display = 'none';
-            textarea.value = textVisible.textContent;
+            
+            if (!isEdited()) {
+                textarea.value = ''; // Borra el contenido del textarea al iniciar la edición solo si es la primera vez
+                textVisible.setAttribute('data-edited', 'true');
+            } else {
+                textarea.value = textVisible.textContent; // Mantiene el texto si ya fue editado antes
+            }
         });
 
         saveButton.addEventListener('click', () => {
@@ -20,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveButton.style.display = 'none';
             editButton.style.display = 'block';
             textVisible.style.display = 'block';
+            saveToLocalStorage(); // Guardar cambios en localStorage
         });
     };
 
@@ -77,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     document.getElementById(imgId).src = e.target.result;
+                    saveToLocalStorage();
                 };
                 reader.readAsDataURL(file);
             }
@@ -113,7 +124,37 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(fileInputId).click();
         });
     });
+    llamarDesdeLocalStorage(); // Cargar datos desde localStorage
 });
+
+// Guardar datos en local storage
+function saveToLocalStorage() {
+    const data = {
+        profesion: document.getElementById('text-profesion-visible').textContent,
+        sobreMi: document.getElementById('text-sobreMi-visible').textContent,
+        proyectoReciente: document.getElementById('text-proyectoReciente-visible').textContent,
+        tituloProyecto: document.getElementById('text-nombre-proyecto-visible').textContent,
+        imagenPerfil: document.getElementById('imagenDePerfil').src,
+        imagenBanner: document.getElementById('ImagenBannerDePerfil').src,
+        imagenProyecto: document.getElementById('imagen-proyecto-reciente').src
+    };
+    
+    localStorage.setItem('perfilData', JSON.stringify(data));
+}
+//Cargar los datos desde local storage
+function llamarDesdeLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('perfilData'));
+
+    if (data) {
+        document.getElementById('text-profesion-visible').textContent = data.profesion;
+        document.getElementById('text-sobreMi-visible').textContent = data.sobreMi;
+        document.getElementById('text-proyectoReciente-visible').textContent = data.proyectoReciente;
+        document.getElementById('text-nombre-proyecto-visible').textContent = data.tituloProyecto;
+        document.getElementById('imagenDePerfil').src = data.imagenPerfil;
+        document.getElementById('ImagenBannerDePerfil').src = data.imagenBanner;
+        document.getElementById('imagen-proyecto-reciente').src = data.imagenProyecto;
+    }
+}
 
 //Funcion para cargar las publicaciones del usuario en la galeria
 function loadPosts() {
