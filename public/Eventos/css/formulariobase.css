@@ -48,7 +48,7 @@
           }
     
     
-        .btn-enviar{
+        #btn-enviar{
             background-color:#F90052;
             border-color: #F90052;
             font-family: 'Poppins', sans-serif;
