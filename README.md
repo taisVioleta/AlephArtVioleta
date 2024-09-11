@@ -1,21 +1,19 @@
-# AlephArt
-Repostorio de equipo Stella
+**TAREA 11 Y 12:**
+***Instrucciones para verificar la funcionalidad de la página.***
+- Realizar git pull de la rama main.
+-   **node server.js**
+  <br>
+![image](https://github.com/user-attachments/assets/4a65490b-f897-48d4-8ae6-6d019ce0e726)
+- Dirigirse a http://localhost:8080
+![image](https://github.com/user-attachments/assets/83bc95a5-9e35-4944-ad40-7a0f83def4b5)
+
+- Utilizar la navbar para dirigirse a las páginas deseadas.
+   - **Código página Registro: /public/Registro/registro.html**
+     <br>
+![image](https://github.com/user-attachments/assets/698a4bc8-8d73-4ff4-a50e-3b115ca683b5)
+  - **Código pagína Login: /public/Login/login.html**
+![image](https://github.com/user-attachments/assets/2e2baaaa-8e28-4ae8-ae1d-9bb5a6833291)
 
 
-Primeros pasos: 
-
-1. forkearnos del repo principal de GitHub.
-2. Importante: hacer una carpeta específicamente para el proyecto Stella y clonar nuestro fork 
-clone >> git clone -dirección http -
-3. Posicionadas en la carpeta y en la rama main: >> hacemos copia exacta de main
-git checkout -b -origin-
 
 
--------------
-Para hacer cambios en nuestra nueva rama:
-
-1. Hacer una rama nueva (git checkout -b -nueva rama-)
-2. hacemos los cambios, guardamos
-3. los agregamos a envío (git add -nombre del archivo modificado-)
-4. git commit -m "describimos los cambios hechos"
-5. git push -origin- -nombre de la rama-
