@@ -10,7 +10,12 @@ function loadEventsFromLocalStorage() {
     const storedEvents = localStorage.getItem('eventos');
     allEvents = storedEvents ? JSON.parse(storedEvents) : [];
     /**allEvents.forEach(event => createEventCard(formatEventData(event))); */ //Probar con esta y la de abajo
-    renderEvents(allEvents);  // Llama a renderEvents en lugar de crear las cards directamente */
+        
+    // Ordenamos los eventos por fecha antes de renderizarlos
+        const sortedEvents = sortEventsByDate(allEvents);
+
+        renderEvents(sortedEvents);  // Renderizamos los eventos ordenados
+   /* renderEvents(allEvents);  // Llama a renderEvents en lugar de crear las cards directamente */
 }
 
 function formatEventData(event) {
@@ -77,6 +82,15 @@ function createEventCard(event) {
     card.querySelector('.delete-event-btn').addEventListener('click', () => confirmDelete(event.id, card));
     eventContainer.appendChild(card);
 }
+
+function sortEventsByDate(events) { //Se añade función para ordenar los elementos por orden cronológico
+    return events.sort((a, b) => {
+        const dateA = new Date(a.fecha);
+        const dateB = new Date(b.fecha);
+        return dateA - dateB;  // Orden ascendente: más cercano primero
+    });
+}
+
 
 function confirmDelete(eventId, card) {
     Swal.fire({

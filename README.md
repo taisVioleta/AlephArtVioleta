@@ -3,12 +3,8 @@
 - Realizar git pull de la rama main.
 <<<<<<< HEAD
 -   **node server.js**
-=======
-- Ingresar a la carpeta */public*.
-- Dentro de la carpeta */public* escribir el comando **node server.js**
   <br>
 ![image](https://github.com/user-attachments/assets/4a65490b-f897-48d4-8ae6-6d019ce0e726)
->>>>>>> parent of 0982146 (Update README.md)
 - Dirigirse a http://localhost:8080
 ![image](https://github.com/user-attachments/assets/83bc95a5-9e35-4944-ad40-7a0f83def4b5)
 
