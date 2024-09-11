@@ -9,7 +9,13 @@ document.addEventListener('DOMContentLoaded', loadEventsFromLocalStorage);
 function loadEventsFromLocalStorage() {
     const storedEvents = localStorage.getItem('eventos');
     allEvents = storedEvents ? JSON.parse(storedEvents) : [];
-    allEvents.forEach(event => createEventCard(formatEventData(event)));
+    /**allEvents.forEach(event => createEventCard(formatEventData(event))); */ //Probar con esta y la de abajo
+        
+    // Ordenamos los eventos por fecha antes de renderizarlos
+        const sortedEvents = sortEventsByDate(allEvents);
+
+        renderEvents(sortedEvents);  // Renderizamos los eventos ordenados
+   /* renderEvents(allEvents);  // Llama a renderEvents en lugar de crear las cards directamente */
 }
 
 function formatEventData(event) {
@@ -21,7 +27,7 @@ function formatEventData(event) {
         day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
         month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
         title: event.nombre,
-        place: `${event.ciudad}, ${event.estado}`,
+        place: `${event.ciudad}, ${event.estado} , ${event.hora} hrs`,
         description: event.descripcion
     };
 }
@@ -40,14 +46,14 @@ function createEventCard(event) {
                         </div>
                         <div class="col-4 d-flex flex-column align-items-center justify-content-between">
                             <div class="text-center">
-                                <h1 class="display-4 text-danger">${event.day}</h1>
-                                <p class="text-primary">${event.month}</p>
+                                <h3 id="day" class="display-4">${event.day}</h3>
+                                <p id="month" class="event-month">${event.month}</p>
                             </div>
                             <div class="d-flex">
                                 <button class="btn btn-outline-light me-1">
                                     <img src="../assets/wishlist-star.png" width="20" height="20">
                                 </button>
-                                <button class="btn btn-outline-light">
+                                <button class="btn btn-outline-light me-1">
                                     <img src="../assets/calendar-plus.png" width="20" height="20">
                                 </button>
                             </div>
@@ -77,6 +83,15 @@ function createEventCard(event) {
     eventContainer.appendChild(card);
 }
 
+function sortEventsByDate(events) { //Se añade función para ordenar los elementos por orden cronológico
+    return events.sort((a, b) => {
+        const dateA = new Date(a.fecha);
+        const dateB = new Date(b.fecha);
+        return dateA - dateB;  // Orden ascendente: más cercano primero
+    });
+}
+
+
 function confirmDelete(eventId, card) {
     Swal.fire({
         title: "¿Estás segur@?",
@@ -95,16 +110,30 @@ function confirmDelete(eventId, card) {
     });
 }
 
+//Función para renderizar los eventos disponibles en cada momento
+function renderEvents(events) {
+    eventContainer.innerHTML = ''; //Limpiamos contenedores
+    events.forEach(event => createEventCard(formatEventData(event)));
+
+    // Se añade dentro de la función de renderizado la lógica para mostrar u ocultar la imagen de "no hay eventos"
+    const noEventsImage = document.getElementById('no-events-image');
+    if (allEvents.length === 0) {
+        noEventsImage.style.display = 'block'; //mostrar la imagen como block en el contendor
+    } else {
+        noEventsImage.style.display = 'none'; //no mostrar la imagen en el contenedor
+    }
+}
+
 // Funciones de edición y eliminación
 function editEvent(eventId) {
-    const events = JSON.parse(localStorage.getItem('eventos')) || [];
+    const allEvents = JSON.parse(localStorage.getItem('eventos')) || [];
     const eventToEdit = allEvents.find(event => event.id === eventId);
     }
 
 function deleteEvent(eventId) {
     allEvents = allEvents.filter(event => event.id !== eventId);
     localStorage.setItem('eventos', JSON.stringify(allEvents));
-    renderEvents(allEvents);
+    renderEvents(allEvents); // Llamamos a renderEvents para actualizar la vista
 }
 
 // Funciones de filtrado y renderizado
@@ -114,11 +143,6 @@ function filterByMonth(month) {
 
 function filterByCategory(category) {
     return allEvents.filter(event => event.categoria === category);
-}
-
-function renderEvents(events) {
-    eventContainer.innerHTML = ''; //Limpiamos contenedores
-    events.forEach(event => createEventCard(formatEventData(event)));
 }
 
 // Eventos de los botones de filtrado
