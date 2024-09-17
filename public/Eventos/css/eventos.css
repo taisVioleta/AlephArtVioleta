@@ -28,6 +28,7 @@
         color: #D5ADFB;
     } 
     
+
     /*--Botón Crear Evento nuevo--*/
     #button1 {
         background-color:#F90052;
@@ -157,7 +158,7 @@
         color:#F90052;
     }
     
-   
+    
     /*----Event-cards styles----*/
     #event-container {
         display: flex; 
@@ -266,7 +267,7 @@
       /*--Sidebar--*/
       @media (max-width: 975px) {
         #button1 {
-        max-width: 300px;
+        max-width: 350px;
         }
 
         .btn-group-vertical {
@@ -298,4 +299,37 @@
 
       }
 
+      /*Se usan para responsividad de las cards*/
+
+      @media (max-width: 768px) {
+        #event-container {
+            padding: 0.5rem; 
+        }
     
+        .card {
+            max-width: 100%; 
+        }
+    }
+    
+    @media (max-width: 576px) {
+        #event-container {
+            gap: 8px; 
+        }
+    }
+
+    /* Estilo del botón para pantallas más pequeñas */
+@media (max-width: 765px) {
+    #button1 {
+        font-size: 1.6rem; 
+        padding: 8px 16px; 
+        width: 100%; 
+    }
+}
+    /*Estilo del encabezado para pantallas más pequeñas*/
+    @media (max-width: 768px) {
+        #index h1, #index h2 {
+          text-align: center;
+          margin: 0 auto;
+        }
+      }
+
