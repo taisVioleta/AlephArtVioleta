@@ -115,10 +115,20 @@ Folly: #F90052
   border-bottom-right-radius: 10px;
   text-align: justify;
 }
+
+.edit-form {
+  width: 100%; /* Ajusta el ancho al contenedor padre */
+  resize: both; /* Permite redimensionar el textarea tanto en ancho como en alto */
+}
+
 .edit-description-textarea {
+  display: auto;
   width: 100%; /* Ajusta el ancho al contenedor padre */
   height: 150px; /* Ajusta la altura */
   resize: both; /* Permite redimensionar el textarea tanto en ancho como en alto */
+  font-family: Poppins,sans-serif;
+  border-color: #D5ADFB;
+  border-radius: 5px;
 }
 
 .card-description p {
