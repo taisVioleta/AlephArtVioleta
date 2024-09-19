@@ -32,13 +32,9 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaC
         <button class="image-buttons delete-button hover-button">
           <img src="../../assets/iconos/trash.png" alt="delete">
         </button>
-        <button class="image-buttons hover-button">
-          <img src="../../assets/iconos/sparkles.png" alt="Like">
-        </button>
-        <div class="like-number"></div>
-        <button class="image-buttons hover-button">
-          <img src="../../assets/iconos/share.png" alt="Share">
-        </button>
+        <button class="image-buttons comment-button hover-button">
+          <img src="../../assets/iconos/meeting.png" alt="Comentar"> 
+        </button> 
       </div>
     </div>
     <div class="card-date">${fechaCreacion}</div> 
@@ -56,6 +52,12 @@ function createCard(usuario, contenido, files = [], imageUrl = '', index, fechaC
   const saveButton = card.querySelector('.save-button');
   const cardDescription = card.querySelector('.card-description');
   const editTextarea = card.querySelector('.edit-textarea');
+  const commentButton = card.querySelector('.comment-button'); //Se añade botón para comentar
+
+  //Se añade evento para redirigir a comentarios
+commentButton.addEventListener('click', () => {
+  window.location.href = `/Publicaciones/PantallaPublicacion/pantallaPublicacion.html?index=${index}`;
+});
 
   // Eventos de edición
   editButton.addEventListener('click', () => {
