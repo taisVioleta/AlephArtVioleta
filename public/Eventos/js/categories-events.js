@@ -1,6 +1,6 @@
 // Variables globales
 const eventContainer = document.getElementById('eventContainer');
-let allEvents = []; //Añadi esta variable para tomarlo en la función de filtrado
+let allEvents = []; // Añadida esta variable para tomarla en la función de filtrado
 
 // Event Listener para cargar los eventos al inicio
 document.addEventListener('DOMContentLoaded', loadEventsFromLocalStorage);
@@ -9,13 +9,10 @@ document.addEventListener('DOMContentLoaded', loadEventsFromLocalStorage);
 function loadEventsFromLocalStorage() {
     const storedEvents = localStorage.getItem('eventos');
     allEvents = storedEvents ? JSON.parse(storedEvents) : [];
-    /**allEvents.forEach(event => createEventCard(formatEventData(event))); */ //Probar con esta y la de abajo
-        
+    
     // Ordenamos los eventos por fecha antes de renderizarlos
-        const sortedEvents = sortEventsByDate(allEvents);
-
-        renderEvents(sortedEvents);  // Renderizamos los eventos ordenados
-   /* renderEvents(allEvents);  // Llama a renderEvents en lugar de crear las cards directamente */
+    const sortedEvents = sortEventsByDate(allEvents);
+    renderEvents(sortedEvents);  // Renderizamos los eventos ordenados
 }
 
 function formatEventData(event) {
@@ -23,11 +20,11 @@ function formatEventData(event) {
         
     return {
         id: event.id,
-        image:event.image  ||'../assets/eventonuevo.png' ,  //se cambió el orden de la condicional para que se vea la imagen predeterminada antes de event.image
+        image: event.image || '../assets/eventonuevo.png', // Se cambió el orden de la condicional para que se vea la imagen predeterminada antes de event.image
         day: eventDate.getUTCDate(), // Usar getUTCDate() para ajustar las zonas horarias automáticamente
-        month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), //Formato MX, muestra un mes corto y ajusta la zona horaria
+        month: eventDate.toLocaleString('es-MX', { month: 'short', timeZone: 'UTC' }), // Formato MX, muestra un mes corto y ajusta la zona horaria
         title: event.nombre,
-        place: `${event.ciudad}, ${event.estado} , ${event.hora} hrs`,
+        place: `${event.ciudad}, ${event.estado}, ${event.hora} hrs`,
         description: event.descripcion
     };
 }
@@ -50,12 +47,18 @@ function createEventCard(event) {
                                 <p id="month" class="event-month">${event.month}</p>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-outline-light me-1">
-                                    <img src="../assets/wishlist-star.png" width="20" height="20">
-                                </button>
-                                <button class="btn btn-outline-light me-1">
-                                    <img src="../assets/calendar-plus.png" width="20" height="20">
-                                </button>
+                             <br>
+                             <a href="../html/formularioEditar.html?id=${event.id}">
+                             <button class="btn btn-outline-light edit-event-btn">
+                                <img src="../assets/pen-field.png" width="20" height="20">
+                             </button>
+                             </a>
+                             <button class="btn btn-outline-light delete-event-btn">
+                             <img src="../assets/trash.png" width="20" height="20">
+                             </button>
+                             <button class="btn btn-outline-light share-event-btn">
+                             <img src="../assets/share.png" width="20" height="20">
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -63,27 +66,21 @@ function createEventCard(event) {
                         <h4 class="event-title">${event.title}</h4>
                         <h6 class="event-place">${event.place}.</h6>
                         <p class="event-description flex-grow-1">${event.description}</p>
-                        <br>
-                        <a href="../html/formularioEditar.html?id=${event.id}">
-                        <button class="btn btn-outline-light edit-event-btn">
-                            <img src="../assets/pen-field.png" width="20" height="20">
-                        </button>
-                        </a>
-                        <button class="btn btn-outline-light delete-event-btn">
-                            <img src="../assets/trash.png" width="20" height="20">
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
     `;
-    //Añadir eventos a los botones de edición y eliminación
+    
+    // Añadir eventos a los botones de edición, eliminación y compartir
     card.querySelector('.edit-event-btn').addEventListener('click', () => editEvent(event.id, card));
     card.querySelector('.delete-event-btn').addEventListener('click', () => confirmDelete(event.id, card));
+    card.querySelector('.share-event-btn').addEventListener('click', () => shareEvent(event));
+    
     eventContainer.appendChild(card);
 }
 
-function sortEventsByDate(events) { //Se añade función para ordenar los elementos por orden cronológico
+function sortEventsByDate(events) { // Se añade función para ordenar los elementos por orden cronológico
     return events.sort((a, b) => {
         const dateA = new Date(a.fecha);
         const dateB = new Date(b.fecha);
@@ -91,6 +88,21 @@ function sortEventsByDate(events) { //Se añade función para ordenar los elemen
     });
 }
 
+function shareEvent(event) {
+    if ("share" in navigator) {
+        navigator.share({
+            title: `Evento: ${event.title}`, // Personaliza el título con el nombre del evento
+            text: event.description, // Añade una breve descripción del evento
+            url: window.location.href // Comparte la URL actual de la página
+        })
+        .then(() => {
+            console.log("Contenido Compartido!");
+        })
+        .catch(console.error);
+    } else {
+        alert('Lo siento, este navegador no tiene soporte para recursos compartidos.');
+    }
+}
 
 function confirmDelete(eventId, card) {
     Swal.fire({
@@ -110,17 +122,17 @@ function confirmDelete(eventId, card) {
     });
 }
 
-//Función para renderizar los eventos disponibles en cada momento
+// Función para renderizar los eventos disponibles en cada momento
 function renderEvents(events) {
-    eventContainer.innerHTML = ''; //Limpiamos contenedores
+    eventContainer.innerHTML = ''; // Limpiamos el contenedor
     events.forEach(event => createEventCard(formatEventData(event)));
 
     // Se añade dentro de la función de renderizado la lógica para mostrar u ocultar la imagen de "no hay eventos"
     const noEventsImage = document.getElementById('no-events-image');
-    if (allEvents.length === 0) {
-        noEventsImage.style.display = 'block'; //mostrar la imagen como block en el contendor
+    if (events.length === 0) {
+        noEventsImage.style.display = 'block'; // Mostrar la imagen como block en el contenedor
     } else {
-        noEventsImage.style.display = 'none'; //no mostrar la imagen en el contenedor
+        noEventsImage.style.display = 'none'; // No mostrar la imagen en el contenedor
     }
 }
 
@@ -128,7 +140,8 @@ function renderEvents(events) {
 function editEvent(eventId) {
     const allEvents = JSON.parse(localStorage.getItem('eventos')) || [];
     const eventToEdit = allEvents.find(event => event.id === eventId);
-    }
+    // Implementa la lógica para editar el evento
+}
 
 function deleteEvent(eventId) {
     allEvents = allEvents.filter(event => event.id !== eventId);
@@ -146,11 +159,10 @@ function filterByCategory(category) {
 }
 
 // Eventos de los botones de filtrado
-document.getElementById('b1').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 1))); //Botón de eventos de este mes
-document.getElementById('b2').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 2))); //Botón de eventos del próximo mes
-document.getElementById('b3').addEventListener('click', () => renderEvents(filterByCategory('Categoría1'))); //Botón de categoria arte urbano, etc
+document.getElementById('b1').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 1))); // Botón de eventos de este mes
+document.getElementById('b2').addEventListener('click', () => renderEvents(filterByMonth(new Date().getMonth() + 2))); // Botón de eventos del próximo mes
+document.getElementById('b3').addEventListener('click', () => renderEvents(filterByCategory('Categoría1'))); // Botón de categoría arte urbano, etc
 document.getElementById('b4').addEventListener('click', () => renderEvents(filterByCategory('Categoría2')));
 document.getElementById('b5').addEventListener('click', () => renderEvents(filterByCategory('Categoría3')));
 document.getElementById('b6').addEventListener('click', () => renderEvents(filterByCategory('Categoría4')));
 document.getElementById('b7').addEventListener('click', () => renderEvents(filterByCategory('Categoría5')));
-
