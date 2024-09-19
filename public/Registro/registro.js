@@ -8,7 +8,7 @@ document
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
     const email = document.getElementById("email").value.trim();
-    const telefono = document.getElementById("telefono").value;
+    const telefono = document.getElementById("telefono").value.trim();
     const contraseña = document.getElementById("contraseña").value.trim();
     const contraseña2 = document.getElementById("contraseña2").value.trim();
 
@@ -47,7 +47,7 @@ document
       isValid = false;
     }
     // Validar el teléfono
-    if (isNaN(telefono) || (telefono.length < 10)) {
+    if (isNaN(telefono) || telefono.length < 10) {
       telefonoError.textContent = "Ingresa un teléfono válido.";
       isValid = false;
     }
@@ -63,56 +63,68 @@ document
       contraseña2Error.textContent = "Las contraseñas no coinciden.";
       isValid = false;
     }
+
     // Enviar el formulario si es válido
     if (isValid) {
-        // Creamos usuario
-        const newUser = {
-            nombre: nombre,
-            apellido: apellido,
-            email: email,
-            telefono: telefono,
-            contraseña: contraseña //hay que ocultarla
-        };
-        // obtenemos los usuarios existentes
-        let users = JSON.parse(localStorage.getItem('users')) || [];
+      // Creamos un objeto con los datos del usuario
+      const newUser = {
+        firstName: nombre,
+        lastName: apellido,
+        email: email,
+        phoneNumber: telefono,
+        password: contraseña // Puedes hacer el hash en el backend
+      };
 
-        const UserExists = users.some(user => user.email === email);
-
-        if (UserExists) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'El correo electrónico ya está registrado.',
-                customClass: {
-                    container: 'my-custom-container',
-                    title: 'my-custom-title',
-                    content: 'my-custom-content',
-                    confirmButton: 'my-custom-confirm-button'
-                },
-                buttonsStyling: false
-            });
+      // Realizamos la petición al backend
+      fetch('/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json(); // Si la respuesta es exitosa
+        } else if (response.status === 409) {
+          // Si el correo ya está registrado (manejar el error 409 conflict)
+          throw new Error('El correo electrónico ya está registrado.');
         } else {
-            // Añadimos el nuevo usuario al arreglo
-            users.push(newUser);
-            // Guardamos los usuarios en el local storage
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Mostramos mensaje de éxito
-            Swal.fire({
-                icon: 'success',
-                title: '¡Listo!',
-                html: 'Haz completado el formulario. <br> ¡Te damos la bienvenida a la comunidad más grande de artistas!',//html, en lugar de text para poder meter salto de línea con <br>
-                customClass: {
-                    container: 'my-custom-container',
-                    title: 'my-custom-title',
-                    content: 'my-custom-content',
-                    confirmButton: 'my-custom-confirm-button'
-                },
-                buttonsStyling: false            
-            }).then(() => {
-                window.location.href = "/login";
-            });
+          throw new Error('Error en el registro. Intenta nuevamente.');
         }
+      })
+      .then(data => {
+        // Mostrar mensaje de éxito y redirigir a la página de login
+        Swal.fire({
+          icon: 'success',
+          title: '¡Listo!',
+          html: 'Te has registrado correctamente. <br> ¡Bienvenido!',
+          customClass: {
+            container: 'my-custom-container',
+            title: 'my-custom-title',
+            content: 'my-custom-content',
+            confirmButton: 'my-custom-confirm-button'
+          },
+          buttonsStyling: false
+        }).then(() => {
+          window.location.href = "/login"; // Redirigir a la página de login
+        });
+      })
+      .catch(error => {
+        // Mostrar mensaje de error si hubo algún problema en el registro
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: error.message,
+          customClass: {
+            container: 'my-custom-container',
+            title: 'my-custom-title',
+            content: 'my-custom-content',
+            confirmButton: 'my-custom-confirm-button'
+          },
+          buttonsStyling: false
+        });
+      });
     }
   });
 
